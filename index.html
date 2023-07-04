@@ -1,0 +1,4497 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リアルタッチ中国</title>
+  <style>
+    .header {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      z-index: 10;
+      background-color: lemonchiffon;
+      width: 100%;
+
+
+    }
+
+    .dataContent {
+      padding-top: 180px;
+      display: block;
+    }
+
+    .dataNone {
+      display: none;
+    }
+
+    .clkBtn {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .divFlex {
+      display: flex;
+    }
+
+    .sheetSelect {
+      padding-top: 0px;
+    }
+
+    .speed {
+      padding-top: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+
+    <h1>リアルタッチ中国</h1>
+    <div>
+      <label for="tts-select">中国語合成言語：</label><select id="tts-select">
+        <option data-lang="zh-CN" data-name="Microsoft Huihui - Chinese (Simplified, PRC)">Microsoft Huihui - Chinese
+          (Simplified, PRC)</option>
+        <option data-lang="zh-CN" data-name="Microsoft Kangkang - Chinese (Simplified, PRC)">Microsoft Kangkang -
+          Chinese (Simplified, PRC)</option>
+        <option data-lang="zh-CN" data-name="Microsoft Yaoyao - Chinese (Simplified, PRC)">Microsoft Yaoyao - Chinese
+          (Simplified, PRC)</option>
+        <option data-lang="zh-CN" data-name="Google&nbsp;普通话（中国大陆）">Google&nbsp;普通话（中国大陆）</option>
+      </select>
+
+      <label for="jp-select">日本語合成言語：</label><select id="jp-select">
+        <option data-lang="ja-JP" data-name="Microsoft Ayumi - Japanese (Japan)">Microsoft Ayumi - Japanese (Japan)
+        </option>
+        <option data-lang="ja-JP" data-name="Microsoft Haruka - Japanese (Japan)">Microsoft Haruka - Japanese (Japan)
+        </option>
+        <option data-lang="ja-JP" data-name="Microsoft Ichiro - Japanese (Japan)">Microsoft Ichiro - Japanese (Japan)
+        </option>
+        <option data-lang="ja-JP" data-name="Microsoft Sayaka - Japanese (Japan)">Microsoft Sayaka - Japanese (Japan)
+        </option>
+        <option data-lang="ja-JP" data-name="Google 日本語">Google 日本語</option>
+      </select>
+    </div>
+    <div class="divFlex">
+      <div class="sheetSelect">
+
+        <label for="sheet-select">シート選択：</label><select id="sheet-select" name="sheetSelect">
+          <option value="第1課の語句">第1課の語句</option>
+          <option value="第1課会話と短文">第1課会話と短文</option>
+          <option value="第２課の語句">第２課の語句</option>
+          <option value="第２課会話と短文">第２課会話と短文</option>
+          <option value="第3課の語句">第3課の語句</option>
+          <option value="第4課の語句">第4課の語句</option>
+          <option value="第4課会話と短文">第4課会話と短文</option>
+        </select>
+      </div>
+      <div class="speed">
+        <label for="speech-Speed">　　音声スピード:</label>
+
+        <select name="speechSpeed" id="speech-Speed">
+          <option value="1.0">1.0</option>
+          <option value="0.9">0.9</option>
+          <option value="0.8">0.8</option>
+          <option value="0.7">0.7</option>
+          <option value="0.6">0.6</option>
+          <option value="0.5">0.5</option>
+          <option value="1.1">1.1</option>
+          <option value="1.2">1.2</option>
+          <option value="1.3">1.3</option>
+          <option value="1.4">1.4</option>
+          <option value="1.5">1.5</option>
+          <option value="1.6">1.6</option>
+          <option value="1.7">1.7</option>
+          <option value="1.8">1.8</option>
+          <option value="1.9">1.9</option>
+          <option value="2.0">2.0</option>
+
+        </select>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="dataContent">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> 第1課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 用途 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 使い道、用途 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 呀，啊 </td>
+          <td> gǎntàn cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～ね、～よ </td>
+
+          <td> 感嘆詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 叫 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～という、～と呼ぶ </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 它 </td>
+          <td> dàimíng cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> （人間以外の事物をさす）それ、あれ </td>
+
+          <td> 代名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一卡通 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> マルチカード </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一般 </td>
+          <td> fù cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 普通、一般的に </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 用 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 利用する、使う </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 图书馆 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 図書館 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 开水房 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 給湯室 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 洗澡堂 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> シャワー室 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 信用卡 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> クレジットカード </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 处处 </td>
+          <td> fù cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 至る所、どこでも </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 对 </td>
+          <td> xíngróng cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> はい、その通りだ </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 哪儿都 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> どこでも </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 通行 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 通用する </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 对了 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> そうだ、そう言えば </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 想家 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ホームシックにかかる </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 已经 </td>
+          <td> fù cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> もう、すでに </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 19 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 习惯 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 慣れる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 20 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 校园 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> キャンパス </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 21 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 热闹 </td>
+          <td> xíngróng cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 賑やかである </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 第１課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 短文の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> ～多 </td>
+          <td> shùcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～余り、～以上 </td>
+
+          <td> 数詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 所 </td>
+          <td> liàng cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 家屋・学校などを数える </td>
+
+          <td> 量詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 绝大多数 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 絶対多数 </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 名牌 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 有名ブランド、名門 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 已 </td>
+          <td> fù cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> すでに、もはや（書き言葉） </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 历史 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 歴史 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 开学 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 学校が始まる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> V+后 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～した後、～してから </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 住进 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> （寮）に入る、住み込む </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> ～里 </td>
+          <td> fāngwèi cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～の中 </td>
+
+          <td> 方位詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 本地 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 地元、現地 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 外地 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> よその土地、地方 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 寒假 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 冬休み </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 暑假 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 夏休み </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 除了～以外 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～のほかに </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 分为 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～に分ける、～に分かれる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 家属 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 家族 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 为了 </td>
+          <td> qiánzhì cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～のために </td>
+
+          <td> 前置詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 19 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 方便 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 便宜をはかる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 20 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 教职员工 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 教職員 </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 21 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 设有 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 設けてある </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 22 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 各种 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 各種の、さまざまな </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 23 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 设施 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 機構、施設 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 24 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 超市 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> スーパーマーケット </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 25 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 理发馆 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 理髪店、美容室 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 26 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 网吧 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> インターネットカフェ </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 27 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 电影院 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 映画館 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 28 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 洗衣店 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> クリーニング店 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 29 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 甚至 </td>
+          <td> fù cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ひいては～さえ、すら </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 30 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 饭店 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ホテル </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 31 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 像 </td>
+          <td> dòngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～のようだ </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 32 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 座 </td>
+          <td> liàng cí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 大型のもの、また固定してものを数える </td>
+
+          <td> 量詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 33 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 城市 </td>
+          <td> míngcí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 都市 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 34 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 不成问题 </td>
+          <td> liányǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 問題にならない、大丈夫 </td>
+
+          <td> 連語 </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dataContent dataNone">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 第１課の会話 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話：簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 人物名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 学生证的用途真多呀！ </td>
+          <td> xuéshengzhèng de yòngtú zhēnduō ya ！</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 学生証の用途は本当に多いね。 </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 是啊。我们叫它“一卡通”。 </td>
+          <td> shì a 。 wǒmen jiào tā “ yīkǎtōng ” 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> そうよ！私たちはそれをマルチカード(one card pass)と呼んでいます。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一般在哪儿用“一卡通”呢？ </td>
+          <td> yībān zài nǎr yòng “ yīkǎtōng ” ne ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 一般的にどこでマルチカードを使いますか？ </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 在图书馆、食堂、学校商店、开水房、洗澡堂都可以用。 </td>
+          <td> zài túshūguǎn shítáng xuéxiào shāngdiàn kāishuǐfáng xǐzǎo táng dū kěyǐ yòng 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 図書館や食堂・学校内の店・給湯室・シャワー室全て使えます。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 噢，它是身份证，也是信用卡。处处都可以用，所以叫“一卡通”，是吧？ </td>
+          <td> ō ， tā shì shēnfènzhèng ， yě shì xìnyòngkǎ 。 chùchù dū kěyǐ yòng ， suǒyǐ jiào “ yīkǎtōng ” ， shì bā ？
+          </td>
+          <td onclick="speakJapanese(this)" class="clkBtn">
+            おぉ、それは身分証明書で、またクレジットカードでもあります。どこでも使えます。だから、マルチカードと呼びます、そういうことでしょう。 </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 对！这张卡在哪儿都可以通行。 </td>
+          <td> duì ！ zhè zhāngkǎ zài nǎr dū kěyǐ tōngxíng 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> そうです。このカードはどこでも通用します。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 对了，你天天都回家吗？ </td>
+          <td> duì le ， nǐ tiāntiān dū huíjiā ma ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> そうだ、あなたは毎日家に帰りますか？ </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 我家不在本市，我周末也在学校。 </td>
+          <td> wǒjiā bù zài běnshì ， wǒ zhōumò yě zài xuéxiào 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 私の家は地元ではない、私は週末も学校にいます。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 周末不能回家，你不想家吗？ </td>
+          <td> zhōumò bùnéng huíjiā ， nǐ bùxiǎng jiā ma ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 週末家に帰れないと、ホームシックにかからないですか？ </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 已经习惯了。不回家的同学很多，周末的校园也很热闹。 </td>
+          <td> yǐjīng xíguàn le 。 bù huíjiā de tóngxué hěnduō ， zhōumò de xiàoyuán yě hěn rènao 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> もう慣れました。家に帰らない同級生は、たくさんいますから、週末のキヤンパスもとてもにぎやかです。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 第１課の短文 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 段落：簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 備考 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 中国有两千多所大学，其中绝大多数是国立大学，私立大学很少。北京大学和清华大学是中国的名牌大学，已有一百多年的历史。
+          </td>
+          <td> zhōngguó yǒu liǎngqiānduō suǒ dàxué ， qízhōng juédàduōshù shì guólìdàxué ， sīlì dàxué hěnshǎo 。
+            běijīngdàxué hé qīnghuádàxué shì zhōngguó de míngpáidàxué ， yǐyǒu yībǎiduōnián de lìshǐ 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn">
+            中国には2000余りの大学があり、その絶対多数は国立大学で、私立大学は少ないです。北京大学と清華大学は中国の名門大学であり、すでに100年以上の歴史があります。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn">
+            中国的大学九月开学。新生入学后，都住进校园里的学生宿舍。本地的学生周末回家，外地来的学生只有寒假和暑假才能回家。除了学生以外，大部分老师也住在校园里。中国的大学校园一般分为教学区、学生宿舍区和家属宿舍区。 </td>
+          <td> zhōngguó de dàxué jiǔyuè kāixué 。 xīnshēng rùxué hòu ， dū zhù jìnxiàoyuán lǐ de xuéshēngsùshè 。 běndì de
+            xuésheng zhōumò huíjiā ， wàidì lái de xuésheng zhǐyǒu hánjià hé shǔjià cáinéng huíjiā 。 chúle xuésheng yǐwài
+            ， dàbùfen lǎoshī yě zhù zài xiàoyuán lǐ 。 zhōngguó de dàxuéxiàoyuán yībān fēnwéi jiàoxuéqū xuésheng sùshèqū
+            hé jiāshǔsùshè qū 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn">
+            中国の大学は9月に新学期が始まります。新入生は入学後、皆キャンパス内の学生寮に入ります。地元の学生は週末に家に帰り、地方から来ている学生は冬休みと夏休みにだけ家に帰ることができます。学生のほかに、ほとんどの教員もキャンパス内に住んでいます。中国の大学のキャンパスは、普通教室エリアと学生寮エリアと家族の宿舎エリアがあります。
+          </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn">
+            为了方便学生和教职员工的生活，校园里设有各种生活设施。有医院、邮局、超市、理发馆、洗澡堂，还有网吧、电影院、洗衣店、幼儿园、小学，甚至饭店。 </td>
+          <td> wèile fāngbiàn xuésheng hé jiàozhíyuángōng de shēnghuó ， xiàoyuán lǐ shèyǒu gèzhǒng shēnghuó shèshī 。 yǒu
+            yīyuàn yóujú chāoshì lǐfāguǎn xǐzǎo táng ， háiyǒu wǎngbā diànyǐngyuàn xǐyīdiàn yòuéryuán xiǎoxué ， shènzhì
+            fàndiàn 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn">
+            学生と教職員の生活に便宜を図るために、キャンパス内には様々な生活施設が設けてあります。病院、郵便局、スーパー、美容院、シャワー室、その他にインターネットカフェ、映画館、クリーニング店、幼稚園、小学校、ホテルすらもあります。
+          </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一所大学就像一座城市，即使不出校门，日常生活也不成问题。 </td>
+          <td> yīsuǒ dàxué jiù xiàng yīzuò chéngshì ， jíshǐ bù chū xiàomén ， rìchángshēnghuó yě bùchéngwèntí 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 一つの大学はまるで街のようで、たとえ校門を出なくとも、日常生活に問題はありません。 </td>
+
+          <td> </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dataContent dataNone">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> 第2課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 漂亮 </td>
+          <td> piàoliang</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> きれいだ </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 多了 </td>
+          <td> duō&nbsp;le</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ずっと～だ </td>
+
+          <td> フレーズ </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 奥运会 </td>
+          <td> Àoyùnhuì</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> オリンピック </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 好像 </td>
+          <td> hǎoxiàng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～らしい </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 建筑 </td>
+          <td> jiànzhù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 建築物 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 像 </td>
+          <td> xiàng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> たとえば </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 鸟巢 </td>
+          <td> Niǎocháo</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 鳥の巣(北京国立スタジアムの別名) </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 国家大剧院 </td>
+          <td> Guójiā&nbsp;Dàjùyuàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 国立大劇場 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 什么的 </td>
+          <td> shénmede&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> などなど、～とか </td>
+
+          <td> フレーズ </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 听说 </td>
+          <td> tīngshuō</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 聞くところによると～だ </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 楼 </td>
+          <td> lóu</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 建物 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 斜 </td>
+          <td> xié</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 斜めである、傾いている </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 原来 </td>
+          <td> yuánlái</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> なんと(～だったのか) </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 中央电视台 </td>
+          <td> Zhōngyāng Diànshìtái</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 中央テレビ局 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 不光 </td>
+          <td> bùguāng&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～ばかりではなく </td>
+
+          <td> 接続詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 市容 </td>
+          <td> shìróng&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 街の様子 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 方便 </td>
+          <td> fāngbiàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 便利である </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 第2課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 短文の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门 </td>
+          <td> Qián miàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (地名)前門 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 大街 </td>
+          <td> dàjiē</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 大通り </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 商业区 </td>
+          <td> shāngyèqū</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 商業地区 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前面 </td>
+          <td> qiánmiàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 位于 </td>
+          <td> wèiyú&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ~に位置する、～にある </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 中轴线 </td>
+          <td> zhōngzhóuxiàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 中軸線 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 从 </td>
+          <td> cóng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～から </td>
+
+          <td> 前置詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一直 </td>
+          <td> yīzhí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> まっすぐに </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 往 </td>
+          <td> wǎng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～へ、～に </td>
+
+          <td> 前置詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 走 </td>
+          <td> zǒu</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 行く、歩く </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 进京 </td>
+          <td> jìnjīng&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 都に入る </td>
+
+          <td> フレーズ </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 门户 </td>
+          <td> ménhù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 玄関口 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一带 </td>
+          <td> yīdài</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> あたり </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 渐渐 </td>
+          <td> jiànjiàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> だんだん、しだいに </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 兴旺 </td>
+          <td> xīngwàng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 繁盛する </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 按照 </td>
+          <td> ànzhào</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ~の通り、~に照らして </td>
+
+          <td> 前置詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 模样 </td>
+          <td> múyàng&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 様子 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 进行 </td>
+          <td> jìnxíng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 行う </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 19 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 终于 </td>
+          <td> zhōngyú&nbsp;</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ついに、とうとう </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 20 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 开张 </td>
+          <td> kāizhāng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> オープンする </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 21 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 条 </td>
+          <td> tiáo</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 細長いものを数える、~本 </td>
+
+          <td> 数量詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 22 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 米 </td>
+          <td> mǐ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> メートル </td>
+
+          <td> 数量詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 23 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 长 </td>
+          <td> cháng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 長さ </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 24 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 步行街 </td>
+          <td> bùxíngjiē</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 歩行者天国 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 25 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 众多 </td>
+          <td> zhòngduō</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (人が)多い </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 26 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 感受 </td>
+          <td> gǎnshòu</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 体験する、感じる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 27 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 气息 </td>
+          <td> qìxī</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 息吹、雰囲気 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dataContent dataNone">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 第2課の会話 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話：簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 人物名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 暑假我回北京了。 </td>
+          <td> shǔjià wǒ huí běijīng le 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 夏休みに北京に帰りました。 </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 北京比以前漂亮多了吧。 </td>
+          <td> běijīng bǐ yǐqián piàoliang duō le bā 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 北京は前よりずっと綺麗になりましたでしょう。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 奥运会以后，变化很大。 </td>
+          <td> àoyùnhuì yǐhòu ， biànhuàhěndà 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> オリンピック以降、大きく変化しました。 </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 好像增加了很多新建筑。 </td>
+          <td> hǎoxiàng zēngjiā le hěnduō xīn jiànzhù 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 新しい建築物が増えたようですね。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 对。像鸟巢、国家大剧院什么的。 </td>
+          <td> duì 。 xiàng niǎocháo guójiādàjùyuàn shénme de 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> はい。例えば鳥の巣、国立大劇場などなど。 </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 听说有一个楼是斜的。 </td>
+          <td> tīngshuō yǒu yīgè lóu shì xié de 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 聞くところによるとある建物は傾いているそうだ。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 噢，你说的是CCTV的新楼吧。 </td>
+          <td> ō ， nǐ shuō de shì cctv de xīnlóu bā 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> あ、あなたが話しているのはCCTVの新しい建物ですね。 </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 原来是中央电视台呀。 </td>
+          <td> yuánlái shì zhōngyāngdiànshìtái ya 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> なんと中央テレビ局だったのか。 </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 不光是市容，北京的交通也方便多了！ </td>
+          <td> bùguāng shì shìróng ， běijīng de jiāotōng yě fāngbiàn duō le ！</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 街の様子ばかりではなく、北京の交通もずっと便 利になった！ </td>
+
+          <td> A </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 真想去看看北京的变化啊！ </td>
+          <td> zhēnxiǎng qù kànkan běijīng de biànhuà a ！</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 北京の変化を本当に見に行ってみたい！ </td>
+
+          <td> B </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 第2課の短文 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 段落：簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 備考 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门大街是北京有名的商业区。 </td>
+          <td> qiánmén shì zǐjìnchéng qiánmiàn de chéngmén ， hé zǐjìnchéng yīyàng ， wèiyú běijīng de zhōngzhóuxiàn shàng
+            。 cóng tiānānménguǎngchǎng yīzhí wǎngnán zǒu jiùshì qiánmén 。 míngqīng de shíhou qiánmén shì jìnjīng de
+            ménhù 。 yīnwèi láiwǎng de rén hěnduō ， suǒyǐ zhè yīdài de shāngdiàn yě jiànjiàn xīngwàng qǐlai 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前門大通りは北京で有名な商業地区です。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn">
+            前门是紫禁城前面的城门，和紫禁城一样，位于北京的中轴线上。从天安门广场一直往南走就是前门。明清的时候前门是进京的门户。因为来往的人很多，所以这一带的商店也渐渐兴旺起来。 </td>
+          <td> jìnnián ànzhào qīngcháo mònián de múyàng ， qiánméndàjiē jìnxíng le dàguīmó xiūfù 。 èr líng líng bānián
+            bāyuè chū ， běijīng qiánmén shāngdiàn jiē zhōngyú kāizhāng le 。 zhèshì yītiáo bābǎimǐ cháng de bùxíngjiē 。
+            kāizhāng yǐlái ， měitiān dū yǒu zhòngduō zhōngwài yóukè lái zhèlǐ gǎnshòu gǔlǎo jīngchéng de wénhuà qìxī 。
+          </td>
+          <td onclick="speakJapanese(this)" class="clkBtn">
+            前門は紫禁城前の城門で、紫禁城と同じく北京の中軸線上に位置します。天安門広場からまっすぐ南へ歩くとすぐに前門です。明と清時代の時前門は都に入る玄関口です。なぜなら行き来する人が多く、このあたりの商店もだんだん繁盛してくる。
+          </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn">
+            近年按照清朝末年的模样，前门大街进行了大规模修复。二〇〇八年八月初，北京前门商店街终于开张了。这是一条八百米长的步行街。开张以来，每天都有众多中外游客来这里感受古老京城的文化气息。 </td>
+          <td> jìnnián ànzhào qīngcháo mònián de múyàng ， qiánméndàjiē jìnxíng le dàguīmó xiūfù 。 èr líng líng bānián
+            bāyuè chū ， běijīng qiánmén shāngdiàn jiē zhōngyú kāizhāng le 。 zhèshì yītiáo bābǎimǐ cháng de bùxíngjiē 。
+            kāizhāng yǐlái ， měitiān dū yǒu zhòngduō zhōngwài yóukè lái zhèlǐ gǎnshòu gǔlǎo jīngchéng de wénhuà qìxī 。
+          </td>
+          <td onclick="speakJapanese(this)" class="clkBtn">
+            近年清王朝末期の様子に基づいて、前門大通りは大規模の修復が行われた。2008年８月初め、北京前門商店街はついにオープンした。これは８００メートルの長さの歩行者天国です。オープン以来、毎日多くの国内外の旅行客がここに来て昔ながらの都の文化雰囲気を感じる。
+          </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 第2課の短文の質問 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 質問簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门大街是哪里的有名的商业区？ </td>
+          <td> qiánméndàjiē shì nǎlǐ de yǒumíng de shāngyèqū ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 商業地として有名な前門大通りはどこにある？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门和紫禁城一样位于北京的哪里？ </td>
+          <td> qiánmén hé zǐjìnchéng yīyàng wèiyú běijīng de nǎlǐ ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前門は、紫禁城のように北京のどこにあるのですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门怎么走？ </td>
+          <td> qiánmén zěnme zǒu ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前門へのアクセスはどうすればよいですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 为什么明清的时候前门是进京的门户？ </td>
+          <td> wèishénme míngqīng de shíhou qiánmén shì jìnjīng de ménhù ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> なぜ、明・清の時代には前門が都の玄関口だったのですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 近年按照清朝末年的模样，前门大街进行什么了？ </td>
+          <td> jìnnián ànzhào qīngcháo mònián de múyàng ， qiánméndàjiē jìnxíng shénme le ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 清朝末期の様子に基づいて、前門大通りは、近年何を行いましたか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 北京前门商店街是什么时候开张的？ </td>
+          <td> běijīng qiánmén shāngdiàn jiē shì shénme shíhou kāizhāng de ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 北京の前門商店街はいつオープンしたのですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 北京前门商店街是一条多少米长的步行街？ </td>
+          <td> běijīng qiánmén shāngdiàn jiē shì yītiáo duōshǎo mǐcháng de bùxíngjiē ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 北京の前門商店街の長さは何メートルですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 中外游客来步行街感受什么？ </td>
+          <td> zhōngwài yóukè lái bùxíngjiē gǎnshòu shénme ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 中国人や外国人観光客は、この歩行者天国に何を体験しに来ているのか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 質問の回答 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 回答簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门大街是北京有名的商业区。 </td>
+          <td> qiánméndàjiē shì běijīng yǒumíng de shāngyèqū 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前門大通りは、北京の有名な商業エリアです。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门位于北京的中轴线上。 </td>
+          <td> qiánmén wèiyú běijīng de zhōngzhóuxiàn shàng 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前門は、北京の中心軸に位置しています。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 前门从天安门广场一直往南走就是前门。 </td>
+          <td> qiánmén cóng tiānānménguǎngchǎng yīzhí wǎngnán zǒu jiùshì qiánmén 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 前門は、天安門広場から南に歩いてすぐのところにあります。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 因为来往的人很多，所以这一带的商店也渐渐兴旺起来。 </td>
+          <td> yīnwèi láiwǎng de rén hěnduō ， suǒyǐ zhè yīdài de shāngdiàn yě jiànjiàn xīngwàng qǐlai 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 多くの人が行き来するため、このエリアのお店は次第に栄えてきました。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 近年按照清朝末年的模样，前门大街进行了大规模修复。 </td>
+          <td> jìnnián ànzhào qīngcháo mònián de múyàng ， qiánméndàjiē jìnxíng le dàguīmó xiūfù 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 近年、前門街は清朝末期の様子に基づき大規模な修復を行いました。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 二〇〇八年八月初，北京前门商店街开张了。 </td>
+          <td> èr líng líng bānián bāyuè chū ， běijīng qiánmén shāngdiàn jiē kāizhāng le 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 2008年8月上旬、北京の前門商店街がオープンした。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 北京前门商店街一条八百米长的步行街。 </td>
+          <td> běijīng qiánmén shāngdiàn jiē yītiáo bābǎimǐ cháng de bùxíngjiē 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 北京前門商店街は、全長800mの歩行者天国通りです。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 中外游客来步行街感受古老京城的文化气息。 </td>
+          <td> zhōngwài yóukè lái bùxíngjiē gǎnshòu gǔlǎo jīngchéng de wénhuà qìxī 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 中国人や外国人観光客が、古都の文化に触れるためにこの歩行者天国通りを訪れています。 </td>
+
+          <td> </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dataContent dataNone">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> 第3課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 刚···就~ </td>
+          <td> gāng…jiù~</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> …たばかりなのにもう～ </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 这么 </td>
+          <td> zhème</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> このように、こんなにも </td>
+
+          <td> 代名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 自行车 </td>
+          <td> zìxíngchē</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 自転車 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 天亮 </td>
+          <td> tiān liàng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 夜が明ける </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一···就~ </td>
+          <td> yī…jiù~</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> …するとすぐ～ </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 没想到 </td>
+          <td> méi xiǎngdào</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 思いもよらなかった </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 你看 </td>
+          <td> nǐ kàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ほら、ごらんなさい </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 那些 </td>
+          <td> nàxiē</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> あれら、それら </td>
+
+          <td> 代名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 打 </td>
+          <td> dǎ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> する </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 太极拳 </td>
+          <td> tàijíquán</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 太極拳 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 不简单 </td>
+          <td> bù jiǎndān</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> たいしたものだ </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 机会 </td>
+          <td> jīhuì</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 機会 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 欸 </td>
+          <td> éi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ねえ </td>
+
+          <td> 感嘆詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 干 </td>
+          <td> gàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> する、やる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 练气功 </td>
+          <td> liàn qìgōng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 気功をする </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 嗬 </td>
+          <td> hè</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ほう（感嘆を表す） </td>
+
+          <td> 感嘆詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 踢毽儿 </td>
+          <td> tī jiànr</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 蹴鞠をする </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 跳舞 </td>
+          <td> tiàowǔ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ダンスをする、踊る </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 第3課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 短文の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 故乡 </td>
+          <td> gùxiāng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ふるさと </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 创始 </td>
+          <td> chuàngshǐ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 創始する、始まる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 于 </td>
+          <td> yú</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～に </td>
+
+          <td> 前置詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 本来 </td>
+          <td> běnlái</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> もともとは </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 种 </td>
+          <td> zhǒng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 種、種類 </td>
+
+          <td> 助数詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 武术 </td>
+          <td> wǔshù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 武術 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 简易 </td>
+          <td> jiǎnyì</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 簡単な </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 出台 </td>
+          <td> chūtái</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 公布される、登場する </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 后 </td>
+          <td> hòu</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～の後、～すると </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 广大 </td>
+          <td> guǎngdà</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 幅広い </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 群众 </td>
+          <td> qúnzhòng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 大衆、民衆 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 掀起 </td>
+          <td> xiānqǐ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 巻き起こす </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 热潮 </td>
+          <td> rècháo</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 急激な高まり、ブーム </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 从此 </td>
+          <td> cóngcǐ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> その時から </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 成为 </td>
+          <td> chéngwéi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～になる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 大众化 </td>
+          <td> dàzhònghuà</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 大衆向き </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 健身 </td>
+          <td> jiànshēn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 体力作り </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 清晨 </td>
+          <td> qīngchén</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 早朝、明け方 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 19 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 到处 </td>
+          <td> dàochù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 至るところ、あちこち </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 20 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 身影 </td>
+          <td> shēnyǐng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 人影、姿 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 21 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 修身养性 </td>
+          <td> xiū shēn yǎng xìng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 人格を磨き修養を積む </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 22 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 传播 </td>
+          <td> chuánbō</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 広める、広まる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dataContent dataNone">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> 第4課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 给 </td>
+          <td> gěi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ‥に（～してくれる） </td>
+
+          <td> 前置詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 介绍 </td>
+          <td> jièshào</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 紹介する </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> V+一下 </td>
+          <td> V+ yī xià</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ちょっと～する、～してみる </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 房子 </td>
+          <td> fángzi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 家屋、家 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 所以 </td>
+          <td> suǒyǐ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> だから、したがって </td>
+
+          <td> 接続詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 进去 </td>
+          <td> jìnqù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 入っていく </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 墙 </td>
+          <td> qiáng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 壁、塀 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 影壁 </td>
+          <td> yǐngbì</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ついたてのような壁 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 起作用 </td>
+          <td> qǐzuòyòng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 役に立つ、役目をする </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 屏风 </td>
+          <td> píngfēng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> びょうぶ </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 正房 </td>
+          <td> zhèngfáng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 母屋 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 坐北朝南 </td>
+          <td> zuòběicháonán</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (家が）北に位置し、南に面する </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 长辈 </td>
+          <td> zhǎngbèi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 目上（の人）、年長者 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 儿子 </td>
+          <td> érzi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> むすこ </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 厢房 </td>
+          <td> xiāngfáng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 母屋の両わきに向かいあった建物 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 女孩子 </td>
+          <td> nǚ hái zi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> むすめ、女の子 </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 后院 </td>
+          <td> hòuyuàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 裏庭 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 进 </td>
+          <td> jìn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 庭を数える </td>
+
+          <td> 助数詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 第4課 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 短文の語句 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 番号 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> 品詞名 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 无数 </td>
+          <td> wúshù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 数えきれない </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 大大小小 </td>
+          <td> dàdà-xiǎoxiǎo</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 大きさが違う様子、様々である </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 它们 </td>
+          <td> tāmen</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> それら </td>
+
+          <td> 代名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 坐落 </td>
+          <td> zuòluò</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (建築物が）位置する、～にある </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 许许多多 </td>
+          <td> xǔxǔ-duōduō</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 多い、たくさん </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 胡同 </td>
+          <td> hútòng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> フートン、路地、横丁 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 后海 </td>
+          <td> Hòuhǎi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (北京の地名)後悔 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 千竿胡同 </td>
+          <td> Qiāngān Hútòng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (フートン名） </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> V+着 </td>
+          <td> V+zhe</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ～ている、～てある </td>
+
+          <td> 連語 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 后裔 </td>
+          <td> hòuyì</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 子孫 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 11 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 牌匾 </td>
+          <td> páibiǎn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 扁額、横額 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 12 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 显示 </td>
+          <td> xiǎnshì</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> はっきり示す、明らかに表れる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 13 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 停放 </td>
+          <td> tíngfàng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 停める </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 14 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 辆 </td>
+          <td> liàng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 車を数える、台、両 </td>
+
+          <td> 数量詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 15 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 马车 </td>
+          <td> mǎchē</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 馬車 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 16 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 仿佛 </td>
+          <td> fǎngfú</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> あたかも（～のようだ）、まるで </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 17 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 带回到 </td>
+          <td> dàihuídào</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 連れ戻す </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 18 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 种 </td>
+          <td> zhǒng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 植える </td>
+
+          <td> 植える </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 19 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 课 </td>
+          <td> kè</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 木・草を数える、株、本 </td>
+
+          <td> 数量詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 20 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 石榴树 </td>
+          <td> shíliúshù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ザクロの木 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 21 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 房檐 </td>
+          <td> fángyán</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 軒、軒先 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 22 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 挂 </td>
+          <td> guà</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 掛ける、掛かる </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 23 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 鸟笼子 </td>
+          <td> niǎolóngzi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 鳥かご </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 24 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 里面 </td>
+          <td> lǐmiàn</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 中 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 25 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 跳来跳去 </td>
+          <td> tiàoláitiàoqù</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 跳ね回る </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 26 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 叫 </td>
+          <td> jiào</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (名前は）～という </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 27 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 六妈 </td>
+          <td> Liùmā</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> （同族中の同世代間における）6番目の祖母 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 28 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 一直 </td>
+          <td> yīzhí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> ずっと、一貫して </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 29 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 操持 </td>
+          <td> cāochí</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> (家事を）切り盛りする </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 30 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 慢慢儿 </td>
+          <td> mànmānr</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> しだいに </td>
+
+          <td> 副詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 31 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 丈夫 </td>
+          <td> zhàngfū</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 夫 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 32 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 原来 </td>
+          <td> yuánlái</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> もとは、以前には </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 33 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 高中 </td>
+          <td> gāozhōng</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 高校 </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 34 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 退休 </td>
+          <td> tuìxiū</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 定年退職する </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 35 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 俩 </td>
+          <td> liǎ</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 2人 </td>
+
+          <td> 数 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 36 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 过 </td>
+          <td> guò</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 暮らす </td>
+
+          <td> 動詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 37 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 悠闲 </td>
+          <td> yōuxián</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> （生活が）ゆったりする、のんびりしている </td>
+
+          <td> 形容詞 </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 38 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 日子 </td>
+          <td> rìzi</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 暮らし </td>
+
+          <td> 名詞 </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dataContent dataNone">
+    <table border="1">
+
+
+
+      <tbody>
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 第2課の会話 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> No. </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話：簡体字 </td>
+          <td> ピンイン</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 日本語訳 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 我 还没去过四合院呢。你给我介绍一下，好吗？ </td>
+          <td> wǒ hái méi qù guò sì hé yuàn ne 。 nǐ gěi wǒ jiè shào yī xià ， hǎo ma ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 私はまだ四合院にいったことがありません。ちょっと私に紹介してみてくれませんか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 好啊！它东南西北四面都有房子，所以叫四合院。咱们进去看看吧。 </td>
+          <td> hǎo a ！ tā dōng nán xī běi sì miàn dōu yǒu fáng zi ， suǒ yǐ jiào sì hé yuàn 。 zán men jìn qù kàn kàn ba 。
+          </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> いいですよ！東西南北4つの方向に家があるので、四合院と呼ばれています。中に入って見てみましょう。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 怎么一进院门就是墙啊？ </td>
+          <td> zěn me yī jìn yuàn mén jiù shì qiáng a ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 中庭に入る時に壁があるのはどうしてですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 这个叫影壁，起屏风的作用。 </td>
+          <td> zhè gè jiào yǐng bì ， qǐ píng fēng de zuò yòng 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> それはついたてのような壁と呼ばれ、屛風の役目をするものです。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 哦，不让外面的人看到里面。 </td>
+          <td> ó ， bù ràng wài miàn de rén kàn dào lǐ miàn 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> おぉ、外側の人に中を見させないようにするのですね。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 对。北房是正房，坐北朝南，是一家的长辈住的。 </td>
+          <td> duì 。 běi fáng shì zhèng fáng ， zuò běi cháo nán ， shì yī jiā de zhǎng bèi zhù de 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> そうです。北の家は母屋で、北に位置し南に面していて、目上の人が住んでいます。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 那东西两侧的房屋呢？ </td>
+          <td> nà dōng xī liǎng cè de fáng wū ne ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> あの東西の2つの家屋はなんですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 8 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 大儿子住东厢房，二儿子住西厢房。 </td>
+          <td> B dà ér zi zhù dōng xiāng fáng ， èr ér zi zhù xī xiāng fáng 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 長男は東の家屋に住んでいて、次男が西の家屋に住んでいます。 </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 9 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 女孩子住哪儿？ </td>
+          <td> nǚ hái zi zhù nǎ ér ？</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> むすめはどこに住んでいますか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 10 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 女孩子住后院。四合院有一进院、二进院，甚至五进院。过去越是有钱的人，住的院子也就越大。 </td>
+          <td> nǚ hái zi zhù hòu yuàn 。 sì hé yuàn yǒu yī jìn yuàn 、 èr jìn yuàn ， shèn zhì wǔ jìn yuàn 。 guò qù yuè shì
+            yǒu qián de rén ， zhù de yuàn zi yě jiù yuè dà 。</td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> むすめは裏庭に住んでいます。四合院は庭が1つ、2つ、更には5つまであります。昔はお金持ちの人ほど広い庭に住んでいました。
+          </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 会話質問 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 1 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：小A去过四合院吗？/小A有没有去过四合院？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 1Aさんは四合院に行ったことがありますか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 回答： </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 2 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：为什么叫四合院？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 2何故「四合院」と呼びますか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 回答： </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 因为+所以+。 </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 3 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：影壁起什么作用？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 3「影壁」はどんな役目をしますか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 回答： </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 4 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：影壁是为了什么？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 4「影壁」は何のためですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 回答： </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 5 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：北房正房是谁住的？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 5北の母屋は誰が住むところですか？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 回答： </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 6 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：大儿子住在哪儿/里？二儿子呢？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 6長男はどこの家屋に住むですか？次男は？ </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 回答： </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> </td>
+
+          <td> </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+          <td> 7 </td>
+          <td onclick="speakChinese(this)" class="clkBtn"> 问：后院是谁住的？ </td>
+          <td> </td>
+          <td onclick="speakJapanese(this)" class="clkBtn"> 7後ろ庭は誰が住むところですか？ </td>
+
+          <td> </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    iniCSSSet();
+    var swJapanese = false;
+    var tdOLD;
+
+    var voiceSelect = document.querySelector('#tts-select');
+    var voiceSelectJP = document.querySelector('#jp-select');
+    var voices = speechSynthesis.getVoices();
+    var osAndroid = false;
+    var ua = window.navigator.userAgent.toLocaleLowerCase();
+
+    if (ua.indexOf("windows") !== -1) {
+      osAndroid = false;
+      console.log(ua);
+      console.log(ua.indexOf("windows"));
+    } else {
+      osAndroid = true;
+      console.log(ua);
+      console.log(ua.indexOf("android"));
+
+    }
+
+
+    let select = document.querySelector('[name="sheetSelect"]');
+
+    select.onchange = event => {
+      var selIndex = select.selectedIndex;
+      console.log(select.selectedIndex);
+      var classElement = document.getElementsByClassName('dataContent');
+      for (let i = 0; i < classElement.length; i++) {
+        if (selIndex === i) {
+
+          classElement[i].classList.remove("dataNone");
+        } else {
+          classElement[i].classList.add("dataNone");
+
+        }
+
+      }
+    }
+
+
+
+    function fetchVoices(cb) {
+      if (!voices || !voices.length) {
+        setTimeout(function () {
+          voices = speechSynthesis.getVoices();
+          fetchVoices(cb);
+        }, 0);
+      }
+      else {
+        cb(voices);
+      }
+    }
+
+    function drawButtons(voices) {
+      for (i = 0; i < voices.length; i++) {
+        if (!osAndroid) {
+
+          if (voices[i].lang == 'zh-CN') {
+            var option = document.createElement('option');
+            option.textContent = voices[i].name;
+            option.setAttribute('data-lang', voices[i].lang);
+            option.setAttribute('data-name', voices[i].name);
+            voiceSelect.appendChild(option);
+            console.log(option);
+
+          } else if (voices[i].lang == 'ja-JP') {
+
+            var option = document.createElement('option');
+            option.textContent = voices[i].name;
+            option.setAttribute('data-lang', voices[i].lang);
+            option.setAttribute('data-name', voices[i].name);
+            voiceSelectJP.appendChild(option);
+            console.log(option);
+          } else {
+            continue;
+          }
+        }
+
+      }
+
+    }
+
+    function speakChinese(param1, param2) {
+      swJapanese = false;
+      speakData(param1, param2);
+
+    }
+    function speakJapanese(param1, param2) {
+      swJapanese = true;
+      speakData(param1, param2);
+
+    }
+
+    function speakData(param1, param2) {
+
+      if (param1 instanceof HTMLTableCellElement) {
+        const td = param1;
+
+
+        if (tdOLD === undefined) {
+          tdOLD = param1;
+        } else {
+          tdOLD.style.backgroundColor = null;
+          tdOLD = param1;
+        }
+
+
+
+        const synth = window.speechSynthesis;
+        const column = td.cellIndex;
+        const tr = td.parentNode;
+        const row = tr.sectionRowIndex;
+
+        console.log("行row=" + row + " 列column=" + column);
+        console.log(td.textContent);
+        const utterence = new SpeechSynthesisUtterance();
+
+        console.log(utterence);
+
+        td.style.backgroundColor = 'cyan';
+
+        if (osAndroid) {
+          speakAndroid(td.textContent);
+
+        } else {
+
+          if (swJapanese) {
+            var selectedIndex = voiceSelectJP.selectedIndex < 0 ? 0 : voiceSelectJP.selectedIndex;
+            var selectedOption = voiceSelectJP.selectedOptions[0].getAttribute('data-name');
+
+          } else {
+            var selectedIndex = voiceSelect.selectedIndex < 0 ? 0 : voiceSelect.selectedIndex;
+            var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
+
+          }
+          speak(selectedOption, td.textContent);
+
+
+
+        }
+
+      }
+
+    }
+    function speak(voiceName, speakText) {
+      var uttr = new SpeechSynthesisUtterance(speakText);
+
+
+      if (!voices || !voices.length) {
+        voices = speechSynthesis.getVoices();
+      }
+      voices.forEach(function (v, i) {
+        if (v.name == voiceName) uttr.voice = v;
+      });
+      uttr.rate = speakSpeedRate();
+      speechSynthesis.cancel();
+      speechSynthesis.speak(uttr);
+    }
+    function speakAndroid(speakText) {
+      var uttr = new SpeechSynthesisUtterance(speakText);
+
+      if (swJapanese) {
+        uttr.lang = "ja-JP"
+
+      } else {
+        uttr.lang = "zh-CN"
+
+      }
+      uttr.rate = speakSpeedRate();
+      speechSynthesis.cancel();
+      speechSynthesis.speak(uttr);
+    }
+
+    function iniCSSSet() {
+      var classElement = document.getElementsByClassName('dataContent');
+      for (let i = 1; i < classElement.length; i++) {
+        classElement[i].classList.add("dataNone");
+      }
+
+    }
+
+    function speakSpeedRate() {
+
+      let select = document.querySelector('[name="speechSpeed"]');
+
+      var rate = parseFloat(select.selectedOptions[0].value);
+      return rate;
+
+    }
+
+    fetchVoices(drawButtons);
+
+
+  </script>
+
+
+</body>
+
+</html>
